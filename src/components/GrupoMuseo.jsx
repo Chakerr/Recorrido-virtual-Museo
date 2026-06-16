@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Lugar from "./Lugar";
-import Analisis from "./Analisis";
-import Recorrido from "./Recorrido";
+import Propuesta from "./Propuesta";
+import Tecnologia from "./Tecnologia";
 import Galeria from "./Galeria";
 
 export default function GrupoMuseo() {
@@ -11,16 +11,16 @@ export default function GrupoMuseo() {
 
   const tabs = [
     { id: "lugar", label: "El Lugar" },
-    { id: "analisis", label: "Análisis" },
-    { id: "recorrido", label: "Recorrido" },
+    { id: "propuesta", label: "Propuesta" },
+    { id: "tecnologia", label: "Tecnología" },
     { id: "galeria", label: "Galería" },
   ];
 
   const renderPagina = () => {
     switch (pagina) {
       case "lugar": return <Lugar />;
-      case "analisis": return <Analisis />;
-      case "recorrido": return <Recorrido />;
+      case "propuesta": return <Propuesta />;
+      case "tecnologia": return <Tecnologia />;
       case "galeria": return <Galeria />;
       default: return <Lugar />;
     }
@@ -29,7 +29,7 @@ export default function GrupoMuseo() {
   return (
     <div style={{ paddingTop: "60px" }}>
 
-      {/* Sub-navbar del museo */}
+      {/* Sub-navbar */}
       <div style={{
         position: "sticky",
         top: "60px",
@@ -78,7 +78,7 @@ export default function GrupoMuseo() {
             letterSpacing: "0.15em",
             color: "var(--rojo)",
           }}>
-            Museo Comunitario
+            Museo Inteligente La Perseverancia
           </div>
         </div>
 
@@ -112,7 +112,6 @@ export default function GrupoMuseo() {
         </div>
       </div>
 
-      {/* Contenido */}
       <main>
         {renderPagina()}
       </main>

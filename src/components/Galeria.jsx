@@ -2,6 +2,30 @@ import { useState, useEffect } from "react";
 
 const fotos = [
   {
+    archivo: "museo-render-norma.png",
+    titulo: "Componentes arquitectónicos",
+    etiqueta: "Lectura de territorio",
+    descripcion: "Fachada de ladrillo con esquinas curveadas, pintura verde y ventanería en aluminio. Elementos que se conservan en la nueva propuesta.",
+  },
+  {
+    archivo: "museo-fachada-actual.png",
+    titulo: "Render de propuesta",
+    etiqueta: "Propuesta arquitectónica",
+    descripcion: "Vista isométrica del modelo 3D del Museo Inteligente La Perseverancia. Tres pisos más azotea sobre el lote esquinero de Cra 4D #31-77.",
+  },
+  {
+    archivo: "museo-render-general.png",
+    titulo: "Zonificación por espacios",
+    etiqueta: "Programa arquitectónico",
+    descripcion: "Distribución de salas por piso: ingreso y espacio público, salas de historia, memoria oral, inmersión 360° y gastronomía, más azotea.",
+  },
+  {
+    archivo: "museo-render-zonificacion.png",
+    titulo: "Normativa POT",
+    etiqueta: "Decreto 555/2021",
+    descripcion: "Elementos de la fachada original conservados en la nueva propuesta. Esquinas curveadas y altura máxima 10.40 m según PEMP Centro Histórico.",
+  },
+  {
     archivo: "fachada-frontal.jpg",
     titulo: "Fachada principal",
     etiqueta: "Nodo de alta visibilidad",
