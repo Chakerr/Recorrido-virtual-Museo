@@ -47,3 +47,13 @@ h1, h2, h3 {
 #mobile-menu.open {
   display: flex !important;
 }
+
+@media (max-width: 768px) {
+  .carrusel-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .que-hacemos-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}

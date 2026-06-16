@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Selector() {
   const navigate = useNavigate();
   const [hoverMuseo, setHoverMuseo] = useState(false);
+  const [hoverCentro, setHoverCentro] = useState(false);
   const base = import.meta.env.BASE_URL;
 
   return (
@@ -156,84 +157,105 @@ export default function Selector() {
           </div>
         </div>
 
-        {/* Grupo 2 — Centro de Ayuda placeholder */}
+        {/* Grupo 2 — Centro con imagen hover */}
         <div
+          onMouseEnter={() => setHoverCentro(true)}
+          onMouseLeave={() => setHoverCentro(false)}
+          onClick={() => navigate("/centro")}
           style={{
-            cursor: "default",
+            cursor: "pointer",
             position: "relative",
             overflow: "hidden",
             borderRadius: "var(--radio)",
             height: "500px",
-            background: "rgba(255,255,255,0.02)",
-            border: "0.5px dashed var(--borde)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            padding: "1.25rem",
-            transition: "background 0.3s",
           }}
-          onMouseEnter={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.04)"}
-          onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.02)"}
         >
+          <img
+            src={`${base}fotos/antes.jpg`}
+            alt="Estado actual"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              objectPosition: "center",
+              background: "#111",
+              opacity: hoverCentro ? 0 : 1,
+              transition: "opacity 0.8s ease",
+            }}
+          />
+          <img
+            src={`${base}fotos/despues-centro.png`}
+            alt="Propuesta centro"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              objectPosition: "center",
+              background: "#111",
+              opacity: hoverCentro ? 1 : 0,
+              transition: "opacity 0.8s ease",
+            }}
+          />
+
           <div style={{
             position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            textAlign: "center",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            background: "linear-gradient(to top, rgba(0,0,0,0.95), transparent)",
+            padding: "3rem 1.25rem 1.25rem",
+            zIndex: 10,
           }}>
             <div style={{
               fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "14px",
-              letterSpacing: "0.2em",
-              color: "var(--borde)",
-              marginBottom: "0.5rem",
-            }}>
-              IMAGEN POR AGREGAR
-            </div>
-            <div style={{
-              fontSize: "11px",
-              color: "var(--borde)",
-              letterSpacing: "0.08em",
-            }}>
-              Grupo 2 · Arquitectura
-            </div>
-          </div>
-
-          <div style={{ zIndex: 10 }}>
-            <div style={{
-              fontFamily: "'Bebas Neue', sans-serif",
               fontSize: "11px",
               letterSpacing: "0.2em",
-              color: "var(--texto-secundario)",
+              color: "var(--rojo)",
               marginBottom: "0.4rem",
             }}>
-              Grupo 2 · Arquitectura
+              Grupo 2 · Arquitectura + Sistemas + Civil + Espacios + Negocios
             </div>
             <div style={{
               fontFamily: "'Bebas Neue', sans-serif",
               fontSize: "32px",
               letterSpacing: "0.05em",
-              color: "var(--texto)",
+              color: "#fff",
               lineHeight: 1,
               marginBottom: "0.5rem",
             }}>
-              CENTRO DE<br />AYUDA
+              NACE
             </div>
             <div style={{
               fontSize: "11px",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "var(--texto-secundario)",
+              color: "rgba(255,255,255,0.5)",
               display: "flex",
               justifyContent: "space-between",
-              borderTop: "0.5px solid var(--borde)",
+              borderTop: "0.5px solid rgba(255,255,255,0.1)",
               paddingTop: "0.75rem",
               marginTop: "0.75rem",
             }}>
-              <span>Ver propuesta →</span>
+              <span>{hoverCentro ? "Ver propuesta →" : "Pasar el cursor"}</span>
               <span>02</span>
             </div>
+          </div>
+
+          <div style={{
+            position: "absolute",
+            top: "1rem",
+            right: "1rem",
+            fontSize: "10px",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "rgba(255,255,255,0.3)",
+            zIndex: 10,
+          }}>
+            {hoverCentro ? "Propuesta" : "Estado actual"}
           </div>
         </div>
       </div>
