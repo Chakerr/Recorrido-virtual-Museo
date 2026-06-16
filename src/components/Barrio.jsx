@@ -376,6 +376,100 @@ export default function Barrio() {
           ))}
         </div>
       </div>
+
+      {/* Línea de tiempo */}
+      <div style={{ borderTop: "0.5px solid var(--borde)", marginBottom: "3rem" }}>
+        <div style={{
+          fontFamily: "'Bebas Neue', sans-serif",
+          fontSize: "13px",
+          letterSpacing: "0.2em",
+          color: "var(--rojo)",
+          padding: "1.5rem 0 1rem",
+        }}>
+          Cronología
+        </div>
+
+        <div style={{ borderTop: "0.5px solid var(--borde)" }}>
+          {[
+            { año: "1912", titulo: "Fundación del barrio", desc: "Leo Kopp escritura los primeros lotes. Nace el barrio obrero vinculado a la Cervecería Bavaria." },
+            { año: "1912", titulo: "Plaza de Mercado", desc: "Se funda la Plaza Distrital de Mercado, corazón comercial y cultural del barrio desde sus inicios." },
+            { año: "1930", titulo: "Construcción de la iglesia", desc: "Los propios vecinos inician la construcción colectiva de la iglesia del barrio, terminada en 1934." },
+            { año: "1948", titulo: "Prohibición de la chicha", desc: "El gobierno prohíbe la producción y venta de chicha. La medida golpea la economía popular del barrio pero no borra su memoria cultural." },
+            { año: "1990", titulo: "Organización comunitaria", desc: "Consolidación de las juntas de acción comunal y colectivos culturales que gestionan el territorio hasta hoy." },
+            { año: "2004", titulo: "Festival de la Chicha", desc: "Nace el Festival de la Chicha, la Changua y el Mute, que hoy convoca más de 560.000 visitantes al año." },
+            { año: "2026", titulo: "Intervención urbana", desc: "Proyecto interdisciplinar Universidad Piloto de Colombia. Dos propuestas de intervención en el lote Cra 4 # 31-76." },
+          ].map((h, i, arr) => (
+            <div key={h.año + h.titulo} style={{
+              display: "grid",
+              gridTemplateColumns: "80px 1px 1fr",
+              gap: "0 1.5rem",
+              borderBottom: i < arr.length - 1 ? "0.5px solid var(--borde)" : "none",
+            }}>
+              {/* Año */}
+              <div style={{
+                padding: "1.25rem 0",
+                display: "flex",
+                alignItems: "flex-start",
+                justifyContent: "flex-end",
+              }}>
+                <span style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: "22px",
+                  color: h.año === "2026" ? "var(--rojo)" : "var(--texto)",
+                  letterSpacing: "0.05em",
+                  lineHeight: 1,
+                }}>
+                  {h.año}
+                </span>
+              </div>
+
+              {/* Línea vertical con punto */}
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                position: "relative",
+              }}>
+                <div style={{
+                  width: "1px",
+                  flex: 1,
+                  background: "var(--borde)",
+                }} />
+                <div style={{
+                  width: "6px",
+                  height: "6px",
+                  borderRadius: "50%",
+                  background: h.año === "2026" ? "var(--rojo)" : "var(--texto-secundario)",
+                  flexShrink: 0,
+                  position: "absolute",
+                  top: "1.4rem",
+                }} />
+              </div>
+
+              {/* Contenido */}
+              <div style={{ padding: "1.25rem 0" }}>
+                <div style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontSize: "16px",
+                  letterSpacing: "0.08em",
+                  color: "var(--texto)",
+                  marginBottom: "0.3rem",
+                }}>
+                  {h.titulo}
+                </div>
+                <div style={{
+                  fontSize: "12px",
+                  color: "var(--texto-secundario)",
+                  lineHeight: 1.6,
+                }}>
+                  {h.desc}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
   );
 }
