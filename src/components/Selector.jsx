@@ -60,8 +60,9 @@ export default function Selector() {
         <div
           onMouseEnter={() => setHoverMuseo(true)}
           onMouseLeave={() => setHoverMuseo(false)}
+          onClick={() => navigate("/museo")}
           style={{
-            cursor: "default",
+            cursor: "pointer",
             position: "relative",
             overflow: "hidden",
             borderRadius: "var(--radio)",

@@ -1,7 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Lugar() {
   const [hover, setHover] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div style={{ minHeight: "100vh", padding: "2rem 1.25rem" }}>
@@ -47,10 +54,15 @@ export default function Lugar() {
         </div>
       </div>
 
+      {/* Imagen */}
       <div
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onClick={() => setHover(!hover)}
+        onTouchEnd={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setHover((prev) => !prev);
+        }}
+        onMouseEnter={() => !isMobile && setHover(true)}
+        onMouseLeave={() => !isMobile && setHover(false)}
         style={{
           position: "relative",
           width: "100%",
@@ -58,6 +70,7 @@ export default function Lugar() {
           cursor: "crosshair",
           overflow: "hidden",
           background: "#111111",
+          touchAction: "none",
         }}
       >
         <img
@@ -89,6 +102,7 @@ export default function Lugar() {
           }}
         />
 
+        {/* Label inferior */}
         <div style={{
           position: "absolute",
           bottom: "1rem",
@@ -116,6 +130,7 @@ export default function Lugar() {
           </div>
         </div>
 
+        {/* Label superior */}
         <div style={{
           position: "absolute",
           top: "1rem",
@@ -126,10 +141,11 @@ export default function Lugar() {
           textTransform: "uppercase",
           color: "rgba(255,255,255,0.4)",
         }}>
-          {hover ? "← volver" : "toca → propuesta"}
+          {hover ? "← volver" : isMobile ? "toca → propuesta" : "pasa el cursor →"}
         </div>
       </div>
 
+      {/* Datos rápidos */}
       <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
